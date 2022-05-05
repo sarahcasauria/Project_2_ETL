@@ -5,10 +5,10 @@
 For this project, our group was instructed to perform ETL on real datasets.
 
 ## Contributors
-[Sarah Casauria]()
-[Dhiren Patel](https://github.com/DhirenkumarP)
-[Rosalina Indriani](https://github.com/oshabu)
-[Michael Dunne](https://github.com/michaeldunneMD17)
+* [Sarah Casauria](https://github.com/sarahcasauria)
+* [Dhiren Patel](https://github.com/DhirenkumarP)
+* [Rosalina Indriani](https://github.com/oshabu)
+* [Michael Dunne](https://github.com/michaeldunneMD17)
 
 ## Project Proposal
 For this project, our group decided to use two global datasets to utilise our ETL skills. We have used 2 datasets from the public platform Kaggle. The sources for our dataset are as follows:
@@ -51,7 +51,7 @@ All null data was then dropped from each dataframe, reducing the `out_of_school`
 
 Since unique countries were required to load into the relational database, any duplicate data was dropped from both dataframes based on the `country_code` field. This transformation did not affect the `out_of_school` dataframe but reduced the `freedom_index` dataframe to 165 rows of data.
 
-For each dataframe, the ‘country_code’ column was then set as the index.
+For each dataframe, the `country_code` column was then set as the index.
 
 ### Load
 Using PostgreSQL as the host, a database titled `project_2_etl` was created with the intention of storing our transformed data. Two tables were created, `out_of_school` and `hf_score` to store the data for the two dataframes. Please refer to the schema(link) provided.
@@ -61,6 +61,7 @@ Once the tables were created in Postgres, SQLAlchemy was employed to make a conn
 The reasoning for this topic was to further investigate the relationship between the human freedom index (HFI) & primary education (aged 6-12 levels). The Cato Institute define this as ‘the state of human freedom in the world based on broad measures encompassing personal, civil, and economic freedoms’. This index is divided into two sub-groups:
 1. Economic freedom 
 2. Personal freedom.  
+
 It is measured on a scale of 1 to 10 with the average score across the 162 juridictions (countries) analysed being 7.12 / 10. 
 In the most index released (2019), Switzerland recorded the highest cumulative index scores
 (Personal: 9.56 , Economic: 8.48), with Venezuela (Personal 4.9, Economic: 2.83), recording the lowest.   
