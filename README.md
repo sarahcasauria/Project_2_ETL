@@ -29,19 +29,25 @@ Our resource documents can be found at:
 * [hfi_cc_2021.csv](hfi_cc_2021.csv)
 
 ### Extract
-Data was extracted from two .csv files which were downloaded from the data sources cited above. Each .csv file was read into a Pandas dataframe with ISO-8859-1 encoding. The two dataframes were labelled as follows:
-* Out of School Rates Global Dataset = `out_of_school`
+Data was extracted from two `.csv` files which were downloaded from the data sources cited above. Since the dataset source links contained multiple `.csv` files each dataset, we downloaded the following files to assist with our ETL process:
+* Out of School Rates Global Dataset
+   * `Primary.csv` was downloaded and renamed to `out_of_school_primary.csv`
+* Human Freedom Index Dataset
+   * `hfi_cc_2021.csv` was downloaded
+
+Each .csv file was read into a Pandas dataframe with ISO-8859-1 encoding. The two dataframes were labelled as follows:
+* Out of School Rates Global Dataset = `out_of_school`.
 * Human Freedom Index Dataset = `freedom_index`
 
 ### Transform
 * Out of School dataset
-    * The dataframe `out_of_school` was reduced to store three columns that we deemed useful for our analysis, which included:
+    * The dataframe `out_of_school` contained 17 data columns. This was reduced to store three columns that we deemed useful for our analysis, which included:
         * “ISO3”
         * “Countries and areas”
         * “Total” (i.e. total percentage of primary school-age students who are out of school)
     * Columns were then renamed to `country_code`, `country_name`, and `out_of_school` respectively.
 * Freedom Index Dataset
-    * The dataframe `freedom_index` was reduced to store three columns that we deemed useful for our analysis, which included:
+    * The dataframe `freedom_index` contained 125 data columns. This was reduced to store three columns that we deemed useful for our analysis, which included:
         * `ISO`
         * `countries`
         * `hf_score` (Human Freedom score)
@@ -49,7 +55,7 @@ Data was extracted from two .csv files which were downloaded from the data sourc
 
 All null data was then dropped from each dataframe, reducing the `out_of_school` dataset down to 112 rows, and the `freedom_index` to 1867 rows.
 
-Since unique countries were required to load into the relational database, any duplicate data was dropped from both dataframes based on the `country_code` field. This transformation did not affect the `out_of_school` dataframe but reduced the `freedom_index` dataframe to 165 rows of data.
+Since unique countries were required to load into the relational database, any duplicate data was dropped from both dataframes based on the `country_code` field. This transformation did not affect the `out_of_school` dataframe but reduced the `freedom_index` dataframe to the first 165 rows of data.
 
 For each dataframe, the `country_code` column was then set as the index.
 
@@ -60,7 +66,7 @@ Once the tables were created in Postgres, SQLAlchemy was employed to make a conn
 
 The reasoning for this topic was to further investigate the relationship between the human freedom index (HFI) & primary education (aged 6-12 levels). The Cato Institute define this as ‘the state of human freedom in the world based on broad measures encompassing personal, civil, and economic freedoms’. This index is divided into two sub-groups:
 1. Economic freedom 
-2. Personal freedom.  
+2. Personal freedom
 
 It is measured on a scale of 1 to 10 with the average score across the 162 juridictions (countries) analysed being 7.12 / 10. 
 In the most index released (2019), Switzerland recorded the highest cumulative index scores
