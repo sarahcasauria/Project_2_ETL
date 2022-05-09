@@ -20,7 +20,7 @@ For this project, our group decided to employ a relational database hosted with 
 ## Project Report
 ### GitHub navigation
 Files uploaded include:
-* [ETL notebook.ipynb](https://github.com/sarahcasauria/Project_2_ETL/blob/main/ETL%20notebook.ipynb) which holds our data extraction, transofmration, and loading into our relational database
+* [ETL notebook.ipynb](https://github.com/sarahcasauria/Project_2_ETL/blob/main/ETL%20notebook.ipynb) which holds our data extraction, transformation, and loading into our relational database
 * [schema.sql](https://github.com/sarahcasauria/Project_2_ETL/blob/main/schema.sql) to create the tables in our relational database which will store the data
 * [joins.sql](https://github.com/sarahcasauria/Project_2_ETL/blob/main/joins.sql) which holds the schema to join our two tables based on country code
 
