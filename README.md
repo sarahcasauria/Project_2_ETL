@@ -78,3 +78,4 @@ https://www.cato.org/human-freedom-index/2021
 ### Summary of Findings
 * This method of ETL is most efficient when multiple datasets share similar information. Our datasets share both country name and country ISO3 standard codes. Therefore, we were able to join the data from both tables based on their country codes.
 * Since we removed any null data from each dataframe before loading into our PostgreSQL database, only 100 countries were represented when we joined the data, as each country had to have data for both the HFI score and the percentage of students out of school. 
+* There is a weak negative correlation between out of school rates and Human Freedom Score, meaning that the more students who are not attending primary school, the lower the Human Freedom Score.
