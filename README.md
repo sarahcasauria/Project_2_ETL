@@ -10,7 +10,7 @@ For this project, our group was instructed to perform ETL on real datasets.
 * [Rosalina Indriani](https://github.com/oshabu)
 * [Michael Dunne](https://github.com/michaeldunneMD17)
 
-## Project Proposal
+## Project Proposal - Dhiren Patel
 For this project, our group decided to use two global datasets to utilise our ETL skills. We have used 2 datasets from the public platform Kaggle. The sources for our dataset are as follows:
 1. UNICEF’s Out of School Rates Global Data, which aggregated net attendance rate of primary, lower secondary, and upper secondary school students globally based on household survey data. This dataset can be found at: https://www.kaggle.com/datasets/komalkhetlani/out-of-school-rates-global-data
 2. The Cato Institute’s Human Freedom Index, which measures the overall global freedom by country. This dataset can be found at: https://www.kaggle.com/datasets/gsutters/the-human-freedom-index
@@ -28,7 +28,7 @@ Our resource documents can be found at:
 * [out_of_school_primary.csv](out_of_school_primary.csv)
 * [hfi_cc_2021.csv](hfi_cc_2021.csv)
 
-### Extract
+### Extract  - Rosalina Indriani
 Data was extracted from two `.csv` files which were downloaded from the data sources cited above. Since the dataset source links contained multiple `.csv` files each dataset, we downloaded the following files to assist with our ETL process:
 * Out of School Rates Global Dataset
    * `Primary.csv` was downloaded and renamed to `out_of_school_primary.csv`
@@ -39,7 +39,7 @@ Each .csv file was read into a Pandas dataframe with ISO-8859-1 encoding. The tw
 * Out of School Rates Global Dataset = `out_of_school`.
 * Human Freedom Index Dataset = `freedom_index`
 
-### Transform
+### Transform - Sarah Casauria
 * Out of School dataset
     * The dataframe `out_of_school` contained 17 data columns. This was reduced to store three columns that we deemed useful for our analysis, which included:
         * “ISO3”
@@ -59,7 +59,7 @@ Since unique countries were required to load into the relational database, any d
 
 For each dataframe, the `country_code` column was then set as the index.
 
-### Load
+### Load - Michael Dunne
 Using PostgreSQL as the host, a database titled `project_2_etl` was created with the intention of storing our transformed data. Two tables were created, `out_of_school` and `hf_score` to store the data for the two dataframes. Please refer to the schema(link) provided.
 
 Once the tables were created in Postgres, SQLAlchemy was employed to make a connection to the database from our Jupyter notebook. Data from the `out_of_school` dataframe was then loaded into the `out_of_school` table and data from the `freedom_index` dataframe was loaded into the `hf_index` table.
